@@ -6,10 +6,10 @@ export default function Header() {
   return (
     <div className="Header">
       <div className="Header-title">
-        Rock - Paper - Scissors Game
+        <h2>Rock - Paper - Scissors Game</h2>
       </div>
       <div className="Header-developer">
-        Juan David Gomez
+        <h3>Juan David Gomez</h3>
       </div>
     </div>
   )

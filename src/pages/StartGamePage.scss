@@ -1,0 +1,14 @@
+@import '../styles/layouts.scss';
+
+.StartGamePage {
+  .inputs-row {
+    @extend .layout-row-center;
+    margin-bottom: 20px;
+
+    .input-column {
+      @extend .layout-column;
+      text-align: left;
+      margin-left: 20px;
+    }
+  }
+}
