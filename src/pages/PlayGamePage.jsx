@@ -1,22 +1,69 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import  * as gameActions from '../redux/game/actions'
+
+import RoundView from '../components/RoundView'
+
+import './PlayGamePage.scss'
+import RoundsHistory from '../components/RoundsHistory';
 
 class PlayGamePage extends Component {
+
+  componentWillMount = () => {
+    const {
+      game,
+      match: {
+        params: {id}
+      }
+    } =  this.props
+
+    if (!game._id) {
+      this.props.actions.getGame(id)
+    }
+  }
+
+  handleSendRound = (round) => {
+    const { game } =  this.props
+    this.props.actions.createRound(game._id, round)
+  }
+
   render() {
+    const { game } = this.props
+
+    if (!game._id) {
+      return  (<Redirect to="/" />)
+    } else if (game.winner) {
+      return  (<Redirect to={`/finish/${game._id}`} />)
+    }
+
     return (
-      <div>
-        <h1>Play Game</h1>
+      <div className="PlayGamePage">
+        <h2>The first player with {game.target} rounds will be the Winner!</h2>
+        <h3>Round {game.rounds.length + 1}</h3>
+        <RoundView
+          game={game}
+          handleSendRound={this.handleSendRound} />
+        <RoundsHistory
+          game={game}
+          rounds={game.rounds} />
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  
-})
+const mapStateToProps = (state) => {
+  return {
+    game: state.game,
+  }
+}
 
-const mapDispatchToProps = {
-  
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(gameActions, dispatch)
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayGamePage)

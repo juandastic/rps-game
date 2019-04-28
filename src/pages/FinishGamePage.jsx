@@ -1,22 +1,57 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 
+import { bindActionCreators } from 'redux'
+
+import  * as gameActions from '../redux/game/actions'
+
 class FinishGamePage extends Component {
+
+  componentWillMount = () => {
+    const {
+      game,
+      match: {
+        params: {id}
+      }
+    } =  this.props
+
+    if (!game._id) {
+      this.props.actions.getGame(id)
+    }
+  }
+
+  handleNewGame = () => {
+    this.props.actions.updateGameAction({});
+  }
+
   render() {
+    const { game } = this.props
+    if (!game._id){
+      return  (<Redirect to="/" />)
+    }
+
     return (
       <div>
-        <h1>Finish Game</h1>
+        <h1>The Winner is {game.winner.nickname}</h1>
+        <button onClick={this.handleNewGame}>
+          Start new Game
+        </button>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  
-})
+const mapStateToProps = (state) => {
+  return {
+    game: state.game,
+  }
+}
 
-const mapDispatchToProps = {
-  
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(gameActions, dispatch)
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FinishGamePage)

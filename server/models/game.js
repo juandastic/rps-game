@@ -15,10 +15,10 @@ const roundSchema = new Schema({
   },
   result: {
     type: String,
-    enum : ['WINNER','DRAW'],
-    default: 'DRAW'
+    enum : ['WINNER','TIE'],
+    default: 'TIE'
   },
-  result: {
+  winner: {
     type: String,
     enum : ['player1','player2']
   }

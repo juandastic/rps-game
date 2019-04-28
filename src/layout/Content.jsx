@@ -13,7 +13,7 @@ export default function Content() {
     <div className="Content">
       <Route path="/" exact component={StartGamePage} />
       <Route path="/play/:id" component={PlayGamePage} />
-      <Route path="/finish" component={FinishGamePage} />
+      <Route path="/finish/:id" component={FinishGamePage} />
     </div>
   )
 }

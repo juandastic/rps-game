@@ -1,22 +1,14 @@
 
-import { START_GAME } from './actions'
+import { UPDATE_GAME } from './actions'
 
-const initialDataState = {
-  game: {},
-  players: {}
-}
+const initialDataState = {}
 
 export default (state = initialDataState, action) => {
   switch (action.type) {
-    case START_GAME: {
-      const data = action.payload;
+    case UPDATE_GAME: {
+      const game = action.payload;
       return {
-        game: {
-          ...data.game
-        },
-        players: {
-          ...data.players
-        }
+        ...game
       }
     }
     default:

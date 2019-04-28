@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux'
 
-import  * as gameActions from '../redux/game/actions';
+import  * as gameActions from '../redux/game/actions'
 
 import './StartGamePage.scss'
 
@@ -76,7 +76,7 @@ class StartGamePage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    game: state.data.game
+    game: state.game
   }
 }
 

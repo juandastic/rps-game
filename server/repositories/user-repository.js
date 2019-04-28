@@ -11,26 +11,26 @@ exports.getCreateUser = async (nickname) => {
     })
   }
 
-  return user;
+  return user
 }
 
 exports.get = async() => {
-  let res = await User.find({});
+  let res = await User.find({})
   return res;
 }
 
 exports.getById = async(id) => {
-  let res = await User.findById(id);
-  return res;
+  let res = await User.findById(id)
+  return res
 }
 
 exports.delete = async(id) => {
-  let res = await User.findById(id);
-  res.delete();
-  return res;
+  let res = await User.findById(id)
+  res.delete()
+  return res
 }
 
 exports.create = async(data) => {
-    let user = new User(data);
-    return await user.save();
+    let user = new User(data)
+    return await user.save()
 }
