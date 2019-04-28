@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-export class FinishGamePage extends Component {
+class FinishGamePage extends Component {
   render() {
     return (
       <div>
