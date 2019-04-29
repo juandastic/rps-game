@@ -31,6 +31,4 @@ app.use(`/${config.API_PREFIX}/score-board`, scoreBoardRoute);
 app.use(express.static('build'));
 app.use('/', indexRoute);
 
-app.listen(config.PORT, function() {
-    console.log("Server is running on Port: " + config.PORT);
-});
+module.exports = app;

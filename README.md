@@ -21,3 +21,4 @@ This will run the SPA build and the server
 - On the root folder run `npm run docker:dev`
 
 This will create two containers one with MongoDb and the another container with the SPA and API server
+*Note : by default the server will be running on port 3000*

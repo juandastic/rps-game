@@ -25,11 +25,12 @@
   "scripts": {
     "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
     "docker:server": "docker-compose -f docker-compose.yml -f docker-compose.traefik.yml up -d",
-    "start:server": "npm rebuild node-sass && npm run build && node server/app.js",
+    "start:server": "npm rebuild node-sass && npm run build && node server/server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test-server": "mocha --recursive --exit"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -45,5 +46,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "mockgoose": "^8.0.1",
+    "supertest": "^4.0.2"
   }
 }
