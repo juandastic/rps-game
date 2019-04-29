@@ -15,19 +15,8 @@ exports.getCreateUser = async (nickname) => {
 }
 
 exports.get = async() => {
-  let res = await User.find({})
+  let res = await User.find({}).populate('games')
   return res;
-}
-
-exports.getById = async(id) => {
-  let res = await User.findById(id)
-  return res
-}
-
-exports.delete = async(id) => {
-  let res = await User.findById(id)
-  res.delete()
-  return res
 }
 
 exports.create = async(data) => {

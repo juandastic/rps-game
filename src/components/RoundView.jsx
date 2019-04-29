@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import './RoundView.scss'
 
 import RoundForm from './RoundForm'
 
 class RoundView extends Component {
   state = {
+    loading: false,
     currentPlayer: 'player1',
     player1: {
       nickname: this.props.game.player1.nickname,
@@ -22,6 +24,7 @@ class RoundView extends Component {
     if (prevProps.game.rounds.length !== this.props.game.rounds.length) {
       this.setState((state)=>{
         return {
+          ...state,
           currentPlayer: 'player1',
           player1: {
             ...state.player1,
@@ -39,6 +42,7 @@ class RoundView extends Component {
   //Save the current player option and update the currentPlayer to the next one
   _changeState = state => {
     return {
+      loading: false,
       currentPlayer: 'player2',
       [state.currentPlayer]: {
         ...state[state.currentPlayer],
@@ -60,18 +64,29 @@ class RoundView extends Component {
   }
 
   handleSelectOption = (option) => {
-    this.optionSelected = option;
-    this.setState(this._changeState, this._checkRoundStatus);
+    this.setState({
+      loading: true
+    })
+    this.optionSelected = option
+    setTimeout(() => {
+      this.setState(this._changeState, this._checkRoundStatus);
+    }, 400);
   }
 
   render() {
-    const { currentPlayer } = this.state
+    const { currentPlayer, loading } = this.state
+
+    if(loading) {
+      return (<div className="loading-spinner">
+        <FontAwesomeIcon className="fa-spin" icon={faSpinner} />
+      </div>)
+    }
 
     return (
       <div className="RoundView">
-        {this.state[currentPlayer] && <RoundForm
+        <RoundForm
           handleSelectOption={this.handleSelectOption}
-          player={this.state[currentPlayer]} />}
+          player={this.state[currentPlayer]} />
       </div>
     )
   }

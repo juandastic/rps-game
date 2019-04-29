@@ -5,6 +5,7 @@ import './App.scss'
 import Header from './layout/Header'
 import Content from './layout/Content'
 import Footer from './layout/Footer';
+import AlertMessage from './components/AlertMessage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Header />
         <Content />
         <Footer />
+        <AlertMessage />
       </div>
     </Router>
   )

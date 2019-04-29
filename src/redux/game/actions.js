@@ -1,6 +1,8 @@
-import Axios from 'axios';
+import Axios from 'axios'
 
-const BASE_API_URL = 'http://localhost:8080'
+import { BASE_API_URL } from '../../config'
+import { displayErrorAction } from '../error/actions'
+
 
 /*
  * action types
@@ -22,21 +24,33 @@ export function updateGameAction(data) {
 
 export function createGame(players) {
   return async (dispatch) => {
-    const result = await Axios.post(`${BASE_API_URL}/games/`, players);
-    dispatch(updateGameAction(result.data));
+    try {
+      const result = await Axios.post(`${BASE_API_URL}/games/`, players)
+      dispatch(updateGameAction(result.data))
+    } catch (error) {
+      dispatch(displayErrorAction(error))
+    }
   }
 }
 
 export function getGame(id) {
   return async (dispatch) => {
-    const result = await Axios.get(`${BASE_API_URL}/games/${id}`);
-    dispatch(updateGameAction(result.data));
+    try {
+      const result = await Axios.get(`${BASE_API_URL}/games/${id}`)
+      dispatch(updateGameAction(result.data))
+    } catch (error) {
+      dispatch(displayErrorAction(error))
+    }
   }
 }
 
 export function createRound(id, round) {
   return async (dispatch) => {
-    const result = await Axios.post(`${BASE_API_URL}/games/${id}/round`, round);
-    dispatch(updateGameAction(result.data));
+    try {
+      const result = await Axios.post(`${BASE_API_URL}/games/${id}/round`, round)
+      dispatch(updateGameAction(result.data))
+    } catch (error) {
+      dispatch(displayErrorAction(error))
+    }
   }
 }

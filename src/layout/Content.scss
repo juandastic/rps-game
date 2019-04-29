@@ -1,4 +1,12 @@
+@import '../styles/responsive.scss';
+
 .Content {
-  height: 100%;
+  height: auto;
   text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+
+  @include breakpoint(sm) {
+    height: 100%
+  }
 }

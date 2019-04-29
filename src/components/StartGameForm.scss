@@ -1,0 +1,18 @@
+@import '../styles/responsive.scss';
+@import '../styles/layouts.scss';
+
+.StartGameForm {
+  .inputs-row {
+    @extend .layout-row-center;
+    margin-bottom: 20px;
+
+    .input-column {
+      @extend .layout-column;
+      text-align: left;
+
+      @include breakpoint(sm) {
+        margin-left: 20px;
+      }
+    }
+  }
+}

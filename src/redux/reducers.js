@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux'
 
-// import users from './users/redurer'
+import error from './error/redurer'
 import game from './game/redurer'
+import board from './board/redurer'
 
 const reducer = combineReducers({
-  game
+  game,
+  board,
+  error
 })
 
 export default reducer

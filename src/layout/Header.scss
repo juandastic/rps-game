@@ -1,5 +1,38 @@
+@import '../styles/color.scss';
+
 .Header {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 25px;
+  background-color: $bg-color;
+  color: $primary-color;
+
+  .Header-title {
+    font-family: 'Gugi', cursive;
+    font-size: 1.5em;
+  }
+
+  .Header-nav {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline;
+      margin: 10px;
+
+      a {
+        color: $primary-color;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover,
+        &.active{
+          color: darken($primary-color, 50%);
+        }
+      }
+    }
+  }
 }

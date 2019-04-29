@@ -1,4 +1,8 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandRock, faHandPaper, faHandScissors } from '@fortawesome/free-solid-svg-icons'
+
+import './RoundForm.scss'
 
 function RoundForm({player, handleSelectOption}) {
   return (
@@ -6,13 +10,13 @@ function RoundForm({player, handleSelectOption}) {
       <h2> {player.nickname}'s turn </h2>
 
       <button className="option-btn" onClick={handleSelectOption.bind(null,'ROCK')}>
-        Rock
+        <FontAwesomeIcon icon={faHandRock} />
       </button>
       <button className="option-btn" onClick={handleSelectOption.bind(null,'PAPER')}>
-        Paper
+        <FontAwesomeIcon icon={faHandPaper} />
       </button>
       <button className="option-btn" onClick={handleSelectOption.bind(null,'SCISSORS')}>
-        Scissors
+        <FontAwesomeIcon icon={faHandScissors} />
       </button>
     </div>
   )

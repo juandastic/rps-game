@@ -1,4 +1,5 @@
 import React from 'react'
+import {NavLink}  from 'react-router-dom'
 
 import './Header.scss'
 
@@ -6,11 +7,14 @@ export default function Header() {
   return (
     <div className="Header">
       <div className="Header-title">
-        <h2>Rock - Paper - Scissors Game</h2>
+        Rock - Paper - Scissors Game
       </div>
-      <div className="Header-developer">
-        <h3>Juan David Gomez</h3>
-      </div>
+      <nav className="Header-nav">
+        <ul>
+          <li><NavLink to="/" exact >Play Game</NavLink></li>
+          <li><NavLink to="/score-board" >Score Board</NavLink></li>
+        </ul>
+      </nav>
     </div>
   )
 }

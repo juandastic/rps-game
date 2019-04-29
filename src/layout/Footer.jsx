@@ -5,7 +5,7 @@ import './Footer.scss'
 export default function Footer() {
   return (
     <div className="Footer">
-      <h2>Footer</h2>
+      <div className="Footer-description">Juan David Gomez</div>
     </div>
   )
 }

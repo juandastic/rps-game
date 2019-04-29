@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { bindActionCreators } from 'redux'
 
-import  * as gameActions from '../redux/game/actions'
+import * as gameActions from '../redux/game/actions'
 
 class FinishGamePage extends Component {
 
@@ -29,12 +29,14 @@ class FinishGamePage extends Component {
     const { game } = this.props
     if (!game._id){
       return  (<Redirect to="/" />)
+    } else if (!game.winner) {
+      return  (<Redirect to={`/play/${game._id}`} />)
     }
 
     return (
       <div>
         <h1>The Winner is {game.winner.nickname}</h1>
-        <button onClick={this.handleNewGame}>
+        <button className="btn-action" onClick={this.handleNewGame}>
           Start new Game
         </button>
       </div>

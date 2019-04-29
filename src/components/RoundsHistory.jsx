@@ -1,11 +1,19 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEquals, faTrophy } from '@fortawesome/free-solid-svg-icons'
+
+import './RoundsHistory.scss'
 
 function RoundsHistory({ game, rounds }) {
   const roundsList = rounds.map( (round, index) => {
-    const label = (game[round.winner]) ? game[round.winner].nickname : round.result
-    return (<div key={round._id}>
+    const isTie = !(game[round.winner])
+    const label = !isTie ? game[round.winner].nickname : ''
+    const classList = ['round-item']
+
+    return (<div className={classList.join(' ')} key={round._id}>
       <h4>Round {index + 1}</h4>
-      <p>{label}</p>
+      { isTie && <FontAwesomeIcon icon={faEquals} />}
+      { !isTie && <p> <FontAwesomeIcon icon={faTrophy} /> {label}</p> }
     </div>)
   })
 

@@ -1,0 +1,32 @@
+@import './color.scss';
+@import './responsive.scss';
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  border-color: $secundary-color;
+  margin: 8px 0;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.btn-action {
+  background-color: $secundary-color;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  border-radius: 10px;
+  width: 100%;
+  margin: 4px 2px;
+  font-size: 1em;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($secundary-color, 10%);
+  }
+
+  @include breakpoint(sm) {
+    width: auto;
+  }
+}

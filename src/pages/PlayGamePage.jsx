@@ -41,8 +41,9 @@ class PlayGamePage extends Component {
 
     return (
       <div className="PlayGamePage">
-        <h2>The first player with {game.target} rounds will be the Winner!</h2>
-        <h3>Round {game.rounds.length + 1}</h3>
+        <h1>Let's Started</h1>
+        <p>The first player with {game.target} victories will be the Winner!</p>
+        <p>Round {game.rounds.length + 1}</p>
         <RoundView
           game={game}
           handleSendRound={this.handleSendRound} />
